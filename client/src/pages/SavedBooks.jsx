@@ -1,5 +1,5 @@
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import { GET_ME } from "../utils/queries";
+import { useQuery, useMutation } from "@apollo/client";
+import { QUERY_ME } from "../utils/queries";
 import { REMOVE_BOOK } from "../utils/mutations";
 
 import { Container, Card, Button, Row, Col } from "react-bootstrap";
@@ -7,7 +7,7 @@ import Auth from "../utils/auth";
 import { removeBookId } from "../utils/localStorage";
 
 const SavedBooks = () => {
-  const { loading, data } = useQuery(GET_ME); // hook to make query request
+  const { loading, data } = useQuery(QUERY_ME); // hook to make query request
   const [removeBook] = useMutation(REMOVE_BOOK); // hook to make mutation request
   // create state to hold saved book data
   const userData = data?.me || {};

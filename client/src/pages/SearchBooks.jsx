@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { gql, useMutation } from "@apollo/react-hooks";
+import { useMutation } from "@apollo/client";
 import { SAVE_BOOK } from "../utils/mutations";
 import { Container, Col, Form, Button, Card, Row } from "react-bootstrap";
 
 import Auth from "../utils/auth";
-import { saveBook, searchGoogleBooks } from "../utils/API";
+// import { saveBook, searchGoogleBooks } from "../utils/API";
 import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
 
 const SearchBooks = () => {
@@ -70,7 +70,7 @@ const SearchBooks = () => {
 
     try {
       // call the addBook mutation to add the book to the user's account
-      await saveBook({variables: { input: bookToSave }});
+      await saveBook({ variables: { input: bookToSave } });
 
       // if book successfully saves to user's account, save book id to state
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
